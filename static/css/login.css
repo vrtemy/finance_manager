@@ -1,0 +1,28 @@
+/* Основные настройки */
+
+body{
+	justify-content: center;
+	align-items: center;
+}
+
+#login{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+		.form-user-info{
+			width: 100%;
+		}
+			.form-input{
+				margin-bottom: 25px;
+			}
+		.btns{
+			display: flex;
+			flex-direction: row;
+			justify-content: space-around;
+			align-items: center;
+		}
+			.primary_btn{
+				margin-right: 25px;
+			}

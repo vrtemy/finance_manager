@@ -1,0 +1,65 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,600;1,200;1,400;1,600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+
+    {% block css %} {% endblock %}
+    
+    <title>{{ title }}</title>
+</head>
+<body class="black_bkg">
+    <nav id="nav" class="gray_bkg">
+        <a class="logo secondary_teal_text" href="{% url 'finances:profile' %}">
+            MyFinance
+        </a>
+        <div class="nav-bar">
+            <div class="balance">
+                <div class="transaction-type-box">
+                    <div class="transaction-btn">
+                        <a href="{% url 'finances:income' %}" class="transaction-type-btn income">+</a>
+                    </div>
+                    <div class="transaction-btn">
+                        <a href="{% url 'finances:outline' %}" class="transaction-type-btn outline">-</a>
+                    </div>
+                </div>
+                <p>{{ target_wallet.name }} : </p>
+                <p class="secondary_teal_text"> {{ target_wallet.balance }} {{ target_wallet.currency }}</p>
+            </div>
+            <a href="{% url 'investing:dashboard' %}">Инвестирование</a>
+            <a href="{% url 'finances:report' %}">Полный отчет</a>
+            <a href="{% url 'budgets:budgets' %}">Копилка</a>
+            <a href="{% url 'finances:profile' %}">Профиль</a>
+            {% block exit-btn %} {% endblock %}
+        </div>
+    </nav>
+
+    {% if messages or form.errors %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert-box {% if message.tags == 'success' %} success {% else %} warning {% endif %} bd_radius gray_bkg">
+            	    <p>{{ message }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="alert-box warning bd_radius gray_bkg">
+                <p>{{ form.non_field_errors }}</p>
+            </div>
+        {% endif %}
+    {% endif %}
+
+    {% block content %} {% endblock %}
+
+    <footer class="gray_bkg">
+        <div>Юсупов А. Т.</div>
+        <div>2024</div>
+        <div>Минск | БГУИР</div>
+    </footer>
+</body>
+</html>

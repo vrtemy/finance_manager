@@ -1,0 +1,40 @@
+/* Основные настройки */
+
+#main{
+	display: flex;
+	justify-content: center;
+	padding: 30px 100px;
+}
+	#main > section{
+		height: max-content;
+	}
+
+
+/* Form */
+	
+form {
+	align-items: normal;
+}
+	.form-create-wallet{
+		margin-bottom: 20px;
+	}
+		.form-target-input{
+			display: flex;
+			flex-direction: row;
+			justify-content: space-around;
+			align-items: center;
+		}
+			.form-target-input > label{
+				font-size: 14px;
+			}
+			.form-target-input > input{
+				width: 15px;
+				height: 15px;
+			}
+			
+	.btns{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		align-items: center;
+	}

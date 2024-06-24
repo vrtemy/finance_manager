@@ -1,0 +1,219 @@
+/* Основные настройки */
+
+#main{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding: 30px 0px;
+}
+	#main > section{
+		height: max-content;
+		margin-right: 30px;
+	}
+	#main > section:last-child{
+		margin-right: 0px;
+	}
+		.section-title > a{
+			font-size: 22px;
+			font-weight: 200;
+			margin-right: 10px;
+		}
+		.section-title > a:first-child{
+			margin-left: 10px;
+		}
+		.section-title > a:last-child{
+			margin-right: 0px;
+		}
+
+
+/* Alert-box */
+.alert-box{
+	top: 2px;
+	left: 310px;
+}
+
+
+#profile{
+	width: 380px;
+}
+
+
+/* Стили информации по счету */
+
+.wallets-main-box{
+	display: flex;
+	justify-content: start;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: inherit;
+}
+	.wallets-main-box > form{
+		width: max-content;
+	}
+	.wallet-box{
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+		padding: 20px;
+		border-radius: 15px;
+		width: max-content;
+		background-color: #613b90;
+		margin-right: 20px;
+		margin-bottom: 30px;
+		border: none;
+		cursor: pointer;
+	}
+	.wallet-box:hover{
+		background-color: #BB86FC;
+	}
+	.target-wallet-box{
+		background-color: #328a81;
+	}
+	.target-wallet-box:hover{
+		background-color: #03DAC5;
+	}
+	.add-wallet-box{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 15px;
+		font-size: 30px;
+		width: 50px;
+		height: 77px;
+		margin-bottom: 30px;
+		background-color: #3f3f3f;
+		color: #d5d5d5;
+	}
+	.add-wallet-box:hover{
+		background-color: #4f4f4f;
+		color: #f3f3f3;
+	}
+		.wallet-box > h4{
+			font-size: 14px;
+			font-weight: 400;
+			margin-bottom: 5px;
+		}
+		.wallet-box > *{
+			cursor: pointer;
+		}
+
+
+/* Form */
+form > div{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: 100%;
+	margin-bottom: 30px;
+}
+	.form-input{
+		margin-right: 30px;
+	}
+	.form-input:last-child{
+		margin-right: 0px;
+	}
+		
+.btns{
+	display: flex;
+	justify-content: space-around;
+	margin-bottom: 0px;
+}
+
+#readonly{
+	border: 1px solid #2b2b2b;
+	border-bottom: 1px solid #fff;
+	pointer-events: none;
+}
+	.readonly:hover{
+		border: 1px solid #2b2b2b;
+		border-bottom: 1px solid #fff;
+	}
+
+
+/* Отчет */
+
+	.report-box{
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		min-width: 347px;
+	}
+		.report-box > h4{
+			color: #CCC;
+			font-weight: 400;
+		}
+		.income-outlay-box{
+			display: flex;
+			flex-direction: column;
+			min-width: 330px;
+			padding-left: 15px;
+			border-left: 1px solid #555;
+		}
+			.transactions{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+				.transaction{
+					padding: 10px 10px;
+					border-bottom: 1px solid #555;
+					width: 310px;
+					transition: 0.2s;
+				}
+				.transaction:hover{
+					background-color: #424242;
+					margin: 3px 0px;
+					border-radius: 15px;
+				}
+				.transaction:hover > .expandable{
+					height: max-content;
+					margin: 7px;
+					margin-top: 10px;
+					max-width: inherit;
+					font-weight: 200;
+					font-size: 14px;
+				}
+				.transaction:last-child{
+					margin-bottom: 0;
+				}
+					.expandable{
+						max-width: 300px;
+						height: 0;
+						font-weight: 200;
+						font-size: 0;
+					}
+						.expandable > p{
+							text-wrap: wrap;
+						}
+					.transaction-base{
+						display: flex;
+						flex-direction: row;
+						justify-content: space-between;
+						align-items: center;
+					}
+						.category-ico-name{
+							display: flex;
+							flex-direction: row;
+							align-items: center;
+						}
+							.category-ico{
+								overflow: hidden;
+								width: 40px;
+								height: 40px;
+								border-radius: 100%;
+								display: flex;
+								justify-content: center;
+								align-items: center;
+								margin-right: 10px;
+							}
+								.category-ico img{
+									user-select: none;
+									width: 25px;
+								}
+							.category-name{
+								font-weight: 200;
+								font-size: 16px;
+							}
+
+

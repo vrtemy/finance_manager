@@ -1,0 +1,106 @@
+{% extends 'finances/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/profile.css' %}">
+{% endblock %}
+
+{% block exit-btn %}
+    {% if user.is_authenticated %}
+        {% if user.is_superuser or user.is_staff %}
+            <a href="{% url 'admin:index' %}" class="btn primary_btn" style="margin-right: 10px">Админ-панель</a>
+        {% endif %}
+        <a href="{% url 'finances:logout' %}" class="btn second_btn">Выйти</a>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <main id="main">
+        <section id="profile" class="section gray_bkg bd_radius">
+            <h1 class="section-title">Личная информация</h1>
+            <div class="wallets-main-box">
+                {% for wallet in wallets %}
+                    <form action="{% url 'finances:wallet_data' %}" method="POST">
+                        {% csrf_token %}
+                        <input 
+                            type="text"
+                            value="{{ wallet.id }}"
+                            name="wallet_id"
+                            style="display: none;"
+                        />
+                        <button type="submit" id="submit-btn" class="wallet-box {% if wallet.target %} target-wallet-box {% endif %}">
+                            <h4>{{ wallet.name }}</h4>
+                            <p>{{ wallet.balance }} {{target_wallet.currency}}</p>
+                        </button>
+                    </form>
+                {% endfor %}
+                
+                <a href="{% url 'finances:create_wallet' %}" class="add-wallet-box">+</a>
+            </div>
+            <form action="{% url 'finances:profile' %}" method="post">
+                {% csrf_token %}
+                <div class="form-person-info">
+                    <div class="form-input">
+                        <label for="{{ form.first_name.id_for_label }}">Имя</label>
+                        {{ form.first_name }}
+                    </div>
+                    <div class="form-input">
+                        <label for="{{ form.username.id_for_label }}">Логин</label>
+                        {{ form.username }}
+                    </div>
+                </div>
+                <div class="form-person-info">
+                    <div class="form-input">
+                        <label for="{{ form.email.id_for_label }}">Почта</label>
+                        {{ form.email }}
+                    </div>
+                </div>
+                <div class="btns">
+                    <div class="submit-btn">
+                        <input type="submit" value="Применить" class="btn primary_btn">
+                    </div>
+                </div>
+            </form>
+        </section>
+        <section id="report" class="section gray_bkg bd_radius">
+            <h1 class="section-title">Отчет за
+                <a href="{% url 'finances:transactions_per_yesterday' %}" class="{% if yesterday == True %}active primary_btn{% else %}second_btn{% endif %}">вчера</a>
+                <a href="{% url 'finances:transactions_per_day' %}" class="{% if yesterday is False%}active primary_btn{% else %}second_btn{% endif %}">сегодня</a>
+            </h1>
+            <div class="report-box">
+                {% if transactions %}
+                    <div class="income-outlay-box">
+                        <div class="transactions">
+                            {% for transaction in transactions %}
+                                <input type="checkbox" id="isexpanded" hidden />
+                                <label class="transaction" for "isexpanded">
+                                    <div class="transaction-base">
+                                        <div class="category-ico-name">
+                                            <div class="category-ico
+                                            {% if transaction.type %} income {% else %} outline {% endif %}">
+                                                <img src="{{ transaction.category.ico.url }}" alt="">
+                                            </div>
+                                            <div class="category-name">{{ transaction.category.name }}</div>
+                                        </div>
+                                        <div class="sum {% if transaction.type %} secondary_teal_text {% else %} primary_purple_text {% endif %}">
+                                            {% if transaction.type %}+{% else %}-{% endif %}
+                                            {{ transaction.sum }} {{ user_data.wallet_currency }}
+                                        </div>
+                                    </div>
+                                    <div class="expandable">
+                                        <p>{{ transaction.date|date:"d.m.y | d M"}}</p>
+                                        {% if transaction.comment %}
+                                            <p></br>{{ transaction.comment }}</p>
+                                        {% endif %}
+                                    </div>
+                                </label>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% else %}
+                    <h4 style="color: #CCC">Нет операций</h4>
+                {% endif %}
+            </div>
+        </section>
+    </main>
+{% endblock %}

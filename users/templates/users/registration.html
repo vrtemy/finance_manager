@@ -1,0 +1,49 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/registration.css' %}">
+{% endblock %}
+
+{% block main %}
+    <main id="main">
+        <section id="registration" class="section gray_bkg bd_radius">
+            <h1 class="section-title">Регистрация</h1>
+            <form action="{% url 'user:registration' %}" method="post">
+                {% csrf_token %}
+                <div class="form-person-info">
+                    <div class="form-input">
+                        <label for="{{ form.first_name.id_for_label }}">Имя</label>
+                        {{ form.first_name }}
+                    </div>
+                    <div class="form-input">
+                        <label for="{{ form.email.id_for_label }}">Почта</label>
+                        {{ form.email }}
+                    </div>
+                    <div class="form-input">
+                        <label for="{{ form.username.id_for_label }}">Логин</label>
+                        {{ form.username }}
+                    </div>
+                </div>
+                <div class="form-user-info">
+                    <div class="form-input">
+                        <label for="{{ form.password1.id_for_label }}">Пароль</label>
+                        {{ form.password1 }}
+                    </div>
+                    <div class="form-input">
+                        <label for="{{ form.password2.id_for_label }}">Подтвердите пароль</label>
+                        {{ form.password2 }}
+                    </div>
+                </div>
+                <div class="btns">
+                    <div class="submit-btn">
+                        <input type="submit" value="Регистрация" class="btn primary_btn">
+                    </div>
+                    <div class="submit-btn">
+                        <a href="{% url 'login' %}" class="btn second_btn">Войти</a>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </main>
+{% endblock %}

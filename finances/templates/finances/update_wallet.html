@@ -1,0 +1,45 @@
+{% extends 'finances/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/update_wallet.css' %}">
+{% endblock %}
+
+{% block content %}
+    <main id="main">
+        <section id="create_wallet" class="section gray_bkg bd_radius">
+            <h1 class="section-title">Обновите данные:</h1>
+            <form action="{% url 'finances:update_wallet' %}" method="post">
+            {% csrf_token %}
+                <div class="form-create-wallet">
+                    <div class="form-input">
+                        <label for="{{ form.name.id_for_label }}">Счет:</label>
+                        {{ form.name }}
+                    </div>
+                </div>
+                <div class="form-create-wallet">
+                    <div class="form-input">
+                        <label for="">Баланс:</label>
+                        {{ wallet.balance }} {{ wallet.currency }}
+                    </div>
+                </div>
+                
+                <div class="form-create-wallet" style"{% if wallet.target is True %}display: none;{% endif %}">
+                    <div class="form-target-input">
+                        <label for="{{ form.target.id_for_label }}">Основной:</label>
+                        {{ form.target }}
+                    </div>
+                </div>
+                
+                <div class="btns">
+                    <div class="submit-btn">
+                        <input type="submit" value="Применить" class="btn primary_btn">
+                    </div>
+                    <div class="submit-btn">
+                        <a href="{% url 'finances:delete_wallet' %}" class="btn second_btn">Удалить счет</a>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </main>
+{% endblock %}

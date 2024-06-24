@@ -1,0 +1,93 @@
+{% extends 'finances/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/report.css' %}">
+{% endblock %}
+    
+{% block content %}
+    <main id="main">
+        <section id="report" class="section gray_bkg bd_radius">
+            <div class="section-title-btn">
+                <h1 class="section-title">Отчет за
+                    <a href="{% url 'finances:report_per_day' %}" class="{% if report_per == 'day' %}primary_btn active{% else %}second_btn{% endif %}">день</a>
+                    <a href="{% url 'finances:report_per_week' %}" class="{% if report_per == 'week' %}primary_btn active{% else %}second_btn{% endif %}">неделю</a>
+                    <a href="{% url 'finances:report_per_month' %}" class="{% if report_per == 'month' %}primary_btn active{% else %}second_btn{% endif %}">месяц</a>
+                </h1>
+                {% if transactions %}
+                    <a href="{% url 'pdf_gen:pdf_generation' %}" style="margin-left: 30px;" class="btn primary_btn">
+                        Скачать!
+                    </a>
+                {% endif %}
+            </div>
+            <div class="report-box">
+                {% if transactions %}
+                    <div class="income-outlay-box">
+                        <div class="transactions">
+                            {% for transaction in transactions %}
+                            {% if transaction.type is True %}
+                                <input type="checkbox" id="isexpanded" hidden />
+                                <label class="transaction" for "isexpanded">
+                                    <div class="transaction-base">
+                                        <div class="category-ico-name">
+                                            <div class="category-ico income">
+                                                <img src="{{ transaction.category.ico.url }}" alt="">
+                                            </div>
+                                            <div class="category-name">{{ transaction.category.name }}</div>
+                                        </div>
+                                        <div class="sum secondary_teal_text">
+                                            + {{ transaction.sum }} {{ transaction.wallet.currency }}
+                                        </div>
+                                    </div>
+                                    <div class="expandable">
+                                        <div>
+                                            <p>{{ transaction.date|date:"d.m.y / d M" }}</p>
+                                            <p>{{ transaction.wallet.name }}</p>
+                                        </div> 
+                                        {% if transaction.comment %}
+                                            <p></br>{{ transaction.comment }}</p>
+                                        {% endif %}
+                                    </div>
+                                </label>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="income-outlay-box">
+                        <div class="transactions">
+                            {% for transaction in transactions %}
+                            {% if transaction.type is False %}
+                                <input type="checkbox" id="isexpanded" hidden />
+                                <label class="transaction" for "isexpanded">
+                                    <div class="transaction-base">
+                                        <div class="category-ico-name">
+                                            <div class="category-ico outline">
+                                                <img src="{{ transaction.category.ico.url }}" alt="">
+                                            </div>
+                                            <div class="category-name">{{ transaction.category.name }}</div>
+                                        </div>
+                                        <div class="sum primary_purple_text">
+                                            - {{ transaction.sum }} {{ transaction.wallet.currency }}
+                                        </div>
+                                    </div>
+                                    <div class="expandable">
+                                        <div>
+                                            <p>{{ transaction.date|date:"d.m.y / d M" }}</p>
+                                            <p>{{ transaction.wallet.name }}</p>
+                                        </div> 
+                                        {% if transaction.comment %}
+                                            <p></br>{{ transaction.comment }}</p>
+                                        {% endif %}
+                                    </div>
+                                </label>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% else %}
+                    <h4 style="color: #CCC">Нет операций</h4>
+                {% endif %}
+            </div>
+        </section>
+    </main>
+{% endblock %}

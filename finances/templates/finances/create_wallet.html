@@ -1,0 +1,37 @@
+{% extends 'finances/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/create_wallet.css' %}">
+{% endblock %}
+
+{% block content %}
+    <main id="main">
+        <section id="create_wallet" class="section gray_bkg bd_radius">
+            <h1 class="section-title">Создайте новый счет:</h1>
+            <form action="{% url 'finances:create_wallet' %}" method="post">
+            {% csrf_token %}
+                <div class="form-create-wallet">
+                    <div class="form-input">
+                        <label for="{{ form.name.id_for_label }}">Назовите счет:</label>
+                        {{ form.name }}
+                    </div>
+                </div>
+                <div class="form-create-wallet">
+                    <div class="form-radio-input">
+                        <label for="{{ form.currency.id_for_label }}">Категория:</label>
+                        {{ form.currency }}
+                    </div>
+                </div>
+                <div class="btns">
+                    <div class="submit-btn">
+                        <input type="submit" value="Добавить" class="btn primary_btn">
+                    </div>
+                    <div class="submit-btn">
+                        <a href="{% url 'finances:profile' %}" class="btn second_btn">Отмена</a>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </main>
+{% endblock %}

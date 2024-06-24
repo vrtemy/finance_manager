@@ -1,0 +1,68 @@
+{% extends 'finances/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/budgets.css' %}">
+{% endblock %}
+    
+{% block content %}
+    <main id="main">
+        <section id="report" class="section gray_bkg bd_radius">
+            <h1 class="section-title">Бюджеты</h1>
+            
+            <div class="budgets-box">
+
+                <div class="budget">
+                    <div class="budget-title">
+                        <div class="budget-name">Отпуск</div>
+                        <div class="budget-success-box">
+                            <div class="budget-line">
+                                <div class="budget-success-line" style="width: 70px; background-color: #007ad7;"></div>
+                            </div>
+                            <div class="budget-success-percent">38%</div>
+                        </div>
+                    </div>
+                     <div class="budget-hidden-info"> 
+                        <div class="hidden-info">
+                            <div>
+                                <span style="color: #007ad7;">2 660 USD</span> / <span>7 000 USD</span>
+                            </div>
+                            <div>
+                                Дата: <span>23.08.2024</span>
+                            </div>
+                        </div>
+                        <div class="hidden-comment">
+                            <span>Накопления нужны на случай организации отпуска в Тайланде при условии полученного согласия на работе.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="budget">
+                    <div class="budget-title">
+                        <div class="budget-name">Автомобиль</div>
+                        <div class="budget-success-box">
+                            <div class="budget-line">
+                                <div class="budget-success-line" style="width: 120px; background-color: #00dd60;"></div>
+                            </div>
+                            <div class="budget-success-percent">71%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="budget">
+                    <div class="budget-title">
+                        <div class="budget-name">Свадьба</div>
+                        <div class="budget-success-box">
+                            <div class="budget-line">
+                                <div class="budget-success-line" style="width: 100px; background-color: #e26200;"></div>
+                            </div>
+                            <div class="budget-success-percent">55%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="" class="budget budget-add-btn">+</a>
+            </div>
+        </section>
+    </main>
+{% endblock %}

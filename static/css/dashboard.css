@@ -1,0 +1,70 @@
+/* Основные настройки */
+
+#main{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding: 30px 0px;
+}
+	#main > section{
+		height: max-content;
+		margin-right: 30px;
+	}
+	#main > section:last-child{
+		margin-right: 0px;
+	}
+
+
+/* Alert-box */
+.alert-box{
+	top: 2px;
+	left: 310px;
+}
+
+
+/* Стиль дашборда */
+.dashboard-main-box{
+	width: 1200px;
+}
+
+	.titles{
+		margin-bottom: 30px;
+	}
+
+	.dashboard-main-box table{
+		width: 100%;
+	}
+		tr:nth-child(even) {
+			background-color: #3f3f3f;
+			border-radius: 15px;
+		}
+			.coin-logo-name > div{
+				display: flex;
+				flex-direction: row;
+				justify-content: start;
+				align-items: center;
+			}
+		th, td{
+			font-size: 14px;
+			font-weight: 400;
+			text-align: center;
+			padding: 5px 10px;
+			border:none;
+		}
+
+		.coin-logo{
+			width: 24px;
+			height: 24px;
+			margin-right: 10px;
+		}
+
+		.coin-diagram-box{
+			width: max-content;
+			height: max-content;
+			padding: 0;
+		}
+
+		.no-data > th{
+			padding: 30px 0;
+			font-size: 16px;
+		}

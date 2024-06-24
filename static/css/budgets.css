@@ -1,0 +1,123 @@
+/* Основные настройки */
+
+#main{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding: 30px 0px;
+}
+	#main > section{
+		height: max-content;
+		margin-right: 30px;
+	}
+	#main > section:last-child{
+		margin-right: 0px;
+	}
+
+
+/* Alert-box */
+.alert-box{
+	top: 2px;
+	left: 310px;
+}
+
+
+/* Стиль панельки бюджета */
+.budget-box{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+	.budget{
+		display: flex;
+		flex-direction: column;
+		padding: 20px;
+		margin-bottom: 10px;
+		border-radius: 15px;
+		background-color: #414040;
+		min-width: 350px;
+		height: max-content;
+	}
+	.budget:hover > .budget-hidden-info *{
+		height: max-content;
+		font-size: 14px;
+	}
+	.budget:hover > .budget-hidden-info{
+		margin-top: 15px;
+	}
+	.budget:hover > .budget-hidden-info .hidden-comment{
+		margin-top: 15px;
+	}
+	.budget, .budget *{
+		cursor: pointer;
+	}
+	.budget:last-child{
+		margin-bottom: 0px;
+	}
+
+		.budget-title{
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+			.budget-name{
+				font-size: 16px;
+				color: #f3f3f3;
+				min-width: 100px;
+				word-wrap: break-word;
+			}
+
+			.budget-success-box{
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				margin-left: 20px;
+			}
+
+				.budget-line{
+					height: 5px;
+					width: 170px;
+					border-radius: 15px;
+					margin-right: 20px;
+					background-color: #a7a7a7;
+				}
+					.budget-success-line{
+						height: 5px;
+						border-radius: 15px;
+					}
+
+				.budget-success-percent{
+					font-size: 16px;
+					color: #f3f3f3;
+				}
+		
+		.budget-hidden-info *{
+			height: 0;
+			font-size: 0;
+		}
+			.hidden-info{
+				font-size: 14px;
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+			}
+			.hidden-comment{
+				font-size: 14px;
+				max-width: 350px;
+				text-wrap: wrap;
+			}
+	
+	.budget-add-btn{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 10px 20px;
+		font-size: 20px;
+	}
+	.budget-add-btn:hover{
+		background-color: #328a81;
+		color: #f3f3f3;
+	}

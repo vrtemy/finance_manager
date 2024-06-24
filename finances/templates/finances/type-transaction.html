@@ -1,0 +1,47 @@
+{% extends 'finances/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/transaction-page.css' %}">
+{% endblock %}
+
+{% block content %}
+    <main id="main">
+        <section id="transaction" class="section gray_bkg bd_radius">
+            <h1 class="section-title">Опишите {% if type_transaction %}доход:{% else %}расход:{% endif %}</h1>
+            <form action="{% if type_transaction %}{% url 'finances:income' %}{% else %}{% url 'finances:outline' %}{% endif %}" method="post">
+            {% csrf_token %}
+                <div class="form-transaction">
+                    <div class="form-input">
+                        <label for="{{ form.sum.id_for_label }}">Сумма:</label>
+                        {{ form.sum }}
+                    </div>
+                    <div class="form-input">
+                        <label for="">Счет:</label>
+                        <input type="text" value="{{ target_wallet.name }}" id="wallet-input" readonly=True>
+                    </div>
+                </div>
+                <div class="form-transaction">
+                    <div class="form-input">
+                        <label for="{{ form.category.id_for_label }}">Категория:</label>
+                        {{ form.category }}
+                    </div>
+                </div>
+                <div class="form-transaction">
+                    <div class="form-input">
+                        <label for="{{ form.comment.id_for_label }}">Комментарий:</label>
+                        {{ form.comment }}
+                    </div>
+                </div>
+                <div class="btns">
+                    <div class="submit-btn">
+                        <input type="submit" value="Добавить" class="btn primary_btn">
+                    </div>
+                    <div class="submit-btn">
+                        <a href="{% url 'finances:profile' %}" class="btn second_btn">Отмена</a>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </main>
+{% endblock %}

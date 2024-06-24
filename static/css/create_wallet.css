@@ -1,0 +1,48 @@
+/* Основные настройки */
+
+#main{
+	display: flex;
+	justify-content: center;
+	padding: 30px 100px;
+}
+	#main > section{
+		height: max-content;
+	}
+
+
+/* Form */
+	
+form {
+	align-items: normal;
+}
+	.form-create-wallet{
+		margin-bottom: 20px;
+	}
+
+			.form-radio-input > label{
+				font-size: 12px;
+			}
+			#id_currency{
+				display: flex;
+				flex-direction: row;
+				justify-content: space-around;
+				align-items: center;
+				margin-top: 15px;
+			}
+				.radio-currency div label{
+					display: flex;
+					flex-direction: row;
+					align-items: center;
+					margin-bottom: 0px;
+				}
+					.radio-currency div label > input{
+						margin-right: 5px;
+					}
+
+	.btns{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		align-items: center;
+		margin: 10px 0px 0px 0px;
+	}

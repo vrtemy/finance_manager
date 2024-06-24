@@ -1,0 +1,70 @@
+/* Основные настройки */
+
+#main{
+	display: flex;
+	justify-content: center;
+	padding: 30px 100px;
+}
+	#main > section{
+		height: max-content;
+	}
+
+
+/* Form */
+
+	form > div{
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		width: 100%;
+		margin-bottom: 30px;
+	}
+		.form-input{
+			margin-right: 30px;
+		}
+		.form-input:last-child{
+			margin-right: 0px;
+		}
+			#wallet-input{
+				font-size: 14px;
+				user-select: none;
+				pointer-events: none;
+				cursor: default;
+				border: 1px solid #2b2b2b;
+			}
+			#id_category{
+				display: flex;
+				flex-direction: row;
+				justify-content: space-around;
+				align-items: center;
+				padding: 10px 5px;
+			}
+				#id_category > div > label{
+					display: flex;
+					align-items: center;
+					margin-bottom: 0px;
+					font-size: 14px;
+				}
+					#id_category > div > label > input{
+						margin-right: 5px;
+					}
+
+	.btns{
+		display: flex;
+		justify-content: space-around;
+		margin-bottom: 0px;
+	}
+			/*.radio-currency{
+				padding: 10px 5px;
+				width: 100%;
+				display: flex;
+				flex-direction: row;
+				justify-content: space-around;
+			}
+				.radio-currency > div{
+					display: flex;
+					align-items: center;
+				}
+					.radio-currency > div > input{
+						margin-right: 5px;
+					}*/

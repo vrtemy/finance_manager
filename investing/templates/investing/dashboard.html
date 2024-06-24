@@ -1,0 +1,61 @@
+{% extends 'finances/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/dashboard.css' %}">
+{% endblock %}
+    
+{% block content %}
+    <main id="main">
+        <section id="dashboard" class="section gray_bkg bd_radius">
+            <h1 class="section-title">Стоимость крипто-активов на рынке</h1>
+            <div class="dashboard-main-box">
+                <table>
+                    <tr class="titles">
+                        <th>ID</th>
+                        <th>Имя</th>
+                        <th>Символ</th>
+                        <th>Цена</th>
+                        <th>1ч %</th>
+                        <th>24ч %</th>
+                        <th>7д %</th>
+                        <th>Капитализация</th>
+                        <th>Изменение 7д</th>
+                    </tr>
+                    {% if coins %}
+                        {% for coin in coins %}
+                            <tr>
+                                <td>{{coin.id}}</td>
+                                <td class="coin-logo-name">
+                                    <div>
+                                        <img class="coin-logo" src="https://s2.coinmarketcap.com/static/img/coins/64x64/{{coin.id}}.png"/>
+                                        {{coin.name}}
+                                    </div>
+                                </td>
+                                <td>{{coin.symbol}}</td>
+                                <td>$ {{coin.price}}</td>
+                                <td class="{% if coin.percent_1h > 0 %}secondary_teal_text{% elif coin.percent_1h < 0 %}primary_purple_text{% endif %}">
+                                    {% if coin.percent_1h > 0 %}+{% endif %}{{coin.percent_1h}}
+                                </td>
+                                <td class="{% if coin.percent_24h > 0 %}secondary_teal_text{% elif coin.percent_24h < 0 %}primary_purple_text{% endif %}">
+                                    {% if coin.percent_24h > 0 %}+{% endif %}{{coin.percent_24h}}
+                                </td>
+                                <td class="{% if coin.percent_7d > 0 %}secondary_teal_text{% elif coin.percent_7d < 0 %}primary_purple_text{% endif %}">
+                                    {% if coin.percent_7d > 0 %}+{% endif %}{{coin.percent_7d}}
+                                </td>
+                                <td>$ {{coin.market_cap}}</td>
+                                <td class="coin-diagram-box">
+                                    <img class="coin-diagram" src="https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/{{coin.id}}.svg" />
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr class="no-data">
+                            <th colspan="9" rowspan="5" > Нет данных </th>
+                        </tr> 
+                    {% endif %}
+                </table>
+            </div>
+        </section>
+    </main>
+{% endblock %}

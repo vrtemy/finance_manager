@@ -1,0 +1,260 @@
+
+/* Основные настройки по проекту*/
+
+* {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: 0.1s;
+    cursor: default;
+}
+
+*::selection{
+    background-color: #444;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+    a:hover{
+        color: #03DAC5;
+    }
+
+input{
+    cursor: pointer;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+    body::-webkit-scrollbar{
+	    width: 10px;
+    }
+    body::-webkit-scrollbar-track{
+        background-color: #222;
+    }
+    body::-webkit-scrollbar-thumb{
+        background-color: #03DAC5;
+        border-radius: 15px;
+    }
+
+
+/* Alert-box */
+.alert-box{
+    font-size: 14px;
+    font-weight: 400;
+    position: absolute;
+    display: block;
+    top: 90px;
+    padding: 20px 35px;
+    border: 1px solid #424242;
+    max-width: 300px;
+    word-wrap: wrap;
+}
+    .success{
+        border: 1px solid #5ACA75;
+    }
+    .warning{
+        border: 1px solid #FF8F39;
+    }
+
+
+/* Section */
+.section{
+    padding: 30px;
+    min-width: 220px;
+}
+    .bd_radius{
+        border-radius: 10px;
+    }
+    .section-title{
+        font-size: 22px;
+        margin-bottom: 30px;
+    }
+
+
+/* Forms */
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+    .form-input{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+        .form-input label{
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+        .form-input input{
+            padding: 10px 5px;
+            background-color: #2b2b2b;
+            border: 1px solid #2b2b2b;
+            border-bottom: 1px solid #fff;
+        }
+            .form-input input:hover{
+                border: 1px solid #fff;
+            }
+
+
+/* Colors */
+body *{
+    color: #fff;
+}
+.primary_purple_text{
+    color: #BB86FC
+}
+.secondary_teal_text{
+    color: #03DAC5
+}
+.black_bkg{
+    background-color: #101010;
+}
+.gray_bkg{
+    background-color: #2b2b2b;
+}
+.active{
+    color: #03DAC5;
+}
+    .active:hover{
+        color: #fff;
+    }
+.income{
+    background-color: #328a81;
+}
+.outline{
+    background-color: #613b90;
+}
+
+
+/* Buttons */
+.btn{
+    padding: 5px 3px;
+    font-size: 14px;
+    font-weight: 400;
+    background-color: #2b2b2b;
+    border: none;
+    transition: 0.2s;
+    cursor: pointer;
+}
+    .primary_btn{
+        border-bottom: 1px solid #03DAC5;
+    }
+        .primary_btn:hover{
+            color: #03DAC5;
+        }
+    .second_btn{
+        border-bottom: 1px solid #BB86FC;
+    }
+        .second_btn:hover{
+            color: #BB86FC;
+        }
+
+
+/* Навигация сайта */
+#nav{
+    padding: 15px 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+    .logo{
+        font-size: 20px;
+    }
+        .logo:hover{
+            color: #BB86FC
+        }
+    .nav-bar{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+        .nav-bar a{
+            margin-right: 30px;
+        }
+        .nav-bar a:last-child{
+            margin-right: 0;
+        }
+        /* Операция */
+#transaction{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+        .transaction-type-box{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-right: 10px;
+        }
+            .transaction-btn{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin-right: 5px;
+            }
+                .transaction-type-btn{
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 24px;
+                }
+                .transaction-type-box .transaction-btn .income{
+                    border: 2px solid #328a81;
+                }
+                    .transaction-type-box .transaction-btn .income:hover{
+                        border: 2px solid #03DAC5;
+                        background-color: #2b2b2b;
+                    }
+                .transaction-type-box .transaction-btn .outline{
+                    border: 2px solid #613b90;
+                }
+                    .transaction-type-box .transaction-btn .outline:hover{
+                        color: #BB86FC;
+                        border: 2px solid #BB86FC;
+                        background-color: #2b2b2b;
+                    }
+        .balance{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-right: 50px;
+        }
+            .balance p{
+                margin-right: 7px;
+            }
+            .balance p:last-child{
+                margin-right: 0;
+                cursor: default;
+            }
+            .balance p::selection{
+                background-color: #424242;
+            }
+
+
+/* Footer */
+footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 15px 0px;
+}
+    footer > div{
+        font-size: 14px;
+        color: #CCC;
+    }

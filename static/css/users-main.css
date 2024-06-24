@@ -1,0 +1,17 @@
+/* Alert-box */
+.alert-box{
+    font-size: 14px;
+    font-weight: 400;
+    position: absolute;
+    display: block;
+    top: 30px;
+    padding: 20px 35px;
+    border: 1px solid #424242;
+    max-width: 900px;
+}
+    .success{
+        border: 1px solid #5ACA75;
+    }
+    .warning{
+        border: 1px solid #FF8F39;
+    }

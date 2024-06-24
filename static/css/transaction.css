@@ -1,0 +1,72 @@
+/* Основные настройки */
+body{}
+
+#main{
+	display: flex;
+	justify-content: center;
+	padding: 30px 100px;
+}
+	#main > section{
+		height: max-content;
+	}
+
+
+/* Alert-box */
+.alert-box{
+	top: 2px;
+	left: 310px;
+}
+
+
+/* Операция */
+#transaction{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+	.section-title{
+		margin-bottom: 30px;
+	}
+	.transaction-type-box{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		align-items: center;
+		width: 400px;
+	}
+		.transaction-btn{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+			.transaction-type-btn{
+				margin-bottom: 20px;
+				width: 97px;
+				height: 97px;
+				border-radius: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-size: 90px;
+			}
+			.income{
+				border: 3px solid #328a81;
+			}
+				.income:hover{
+					border: 3px solid #03DAC5;
+					background-color: #2b2b2b;
+				}
+			.outline{
+				border: 3px solid #613b90;
+			}
+				.outline:hover{
+					color: #BB86FC;
+					border: 3px solid #BB86FC;
+					background-color: #2b2b2b;
+				}
+			.transaction-btn h2{
+				font-weight: 400;
+				font-size: 16px;
+			}
